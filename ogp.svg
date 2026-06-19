@@ -1,71 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#081428"/>
-      <stop offset="100%" stop-color="#0D1E38"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#0044CC"/>
-      <stop offset="100%" stop-color="#4A80F0"/>
-    </linearGradient>
-    <!-- Diagonal stripes pattern -->
-    <pattern id="stripes" patternUnits="userSpaceOnUse" width="60" height="60" patternTransform="rotate(-55)">
-      <rect width="60" height="60" fill="none"/>
-      <line x1="30" y1="0" x2="30" y2="60" stroke="rgba(0,68,204,0.08)" stroke-width="1"/>
-    </pattern>
-  </defs>
-
-  <!-- Background -->
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <!-- Stripe overlay -->
-  <rect width="1200" height="630" fill="url(#stripes)"/>
-
-  <!-- Left blue accent bar -->
-  <rect x="0" y="0" width="6" height="630" fill="url(#accent)"/>
-
-  <!-- Hexagon badge -->
-  <polygon points="900,315 970,355 970,435 900,475 830,435 830,355"
-    fill="none" stroke="#0044CC" stroke-width="2" opacity="0.6"/>
-  <polygon points="900,300 985,347 985,443 900,490 815,443 815,347"
-    fill="none" stroke="rgba(0,68,204,0.3)" stroke-width="1"/>
-
-  <!-- S.F.P large text in hex -->
-  <text x="900" y="415"
-    text-anchor="middle"
-    font-family="Arial Black,Impact,sans-serif"
-    font-size="72" font-weight="900"
-    fill="#F5C500" opacity="0.9"
-    letter-spacing="4">SFP</text>
-
-  <!-- Eyebrow label -->
-  <text x="80" y="230"
-    font-family="Arial,sans-serif"
-    font-size="18" font-weight="600"
-    fill="#6B8FCC" letter-spacing="6"
-    text-transform="uppercase">OKINAWA · HAEBARU-CHO · FUTSAL CIRCLE</text>
-
-  <!-- Main title -->
-  <text x="80" y="310"
-    font-family="Arial Black,Impact,sans-serif"
-    font-size="68" font-weight="900"
-    fill="#FFFFFF" letter-spacing="2">SMILEY FUTSAL</text>
-  <text x="80" y="390"
-    font-family="Arial Black,Impact,sans-serif"
-    font-size="68" font-weight="900"
-    fill="#F5C500" letter-spacing="2">PROJECT</text>
-
-  <!-- Tagline -->
-  <text x="80" y="452"
-    font-family="Arial,sans-serif"
-    font-size="20"
-    fill="rgba(255,255,255,0.6)" letter-spacing="3">男女問わず初心者大歓迎　月・水・金 20:00〜22:00</text>
-
-  <!-- Gold accent line -->
-  <rect x="80" y="480" width="120" height="3" fill="#F5C500"/>
-
-  <!-- Domain -->
-  <text x="80" y="540"
-    font-family="Arial,sans-serif"
-    font-size="16"
-    fill="rgba(255,255,255,0.35)" letter-spacing="3">sfp-okinawa.search-mania.net</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1200 630" width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="630" fill="#07132A"/>
+<rect x="0" y="0" width="1200" height="4" fill="#F5C500"/>
+<rect x="0" y="626" width="1200" height="4" fill="#F5C500"/>
+<rect x="0" y="4" width="5" height="622" fill="#0044CC"/>
+<circle cx="970" cy="315" r="260" fill="none" stroke="#0044CC" stroke-width="1.5" opacity="0.25"/>
+<circle cx="970" cy="315" r="190" fill="none" stroke="#0044CC" stroke-width="1.5" opacity="0.18"/>
+<circle cx="970" cy="315" r="120" fill="none" stroke="#F5C500" stroke-width="1.5" opacity="0.22"/>
+<circle cx="970" cy="315" r="55" fill="#0044CC" opacity="0.18"/>
+<line x1="0" y1="630" x2="320" y2="0" stroke="#F5C500" stroke-width="1" opacity="0.06"/>
+<text x="84" y="268" font-family="'Arial Black','Arial',sans-serif" font-size="150" font-weight="900" fill="#FFFFFF" opacity="0.97" letter-spacing="6">S.F.P</text>
+<rect x="84" y="286" width="420" height="3.5" fill="#F5C500"/>
+<text x="84" y="358" font-family="'Noto Sans JP','Hiragino Kaku Gothic ProN','Meiryo',sans-serif" font-size="30" fill="rgba(255,255,255,0.88)" letter-spacing="2">スマイリーフットサルプロジェクト</text>
+<text x="86" y="410" font-family="Arial,sans-serif" font-size="22" fill="#F5C500" letter-spacing="9">SMILEY FUTSAL PROJECT</text>
+<line x1="84" y1="452" x2="545" y2="452" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+<text x="84" y="500" font-family="Arial,sans-serif" font-size="21" fill="rgba(255,255,255,0.45)" letter-spacing="2">南風原町 · 南星中学校体育館 · 沖縄</text>
+<text x="84" y="538" font-family="Arial,sans-serif" font-size="19" fill="rgba(255,255,255,0.3)" letter-spacing="2">水 · 土 · 日  19歳以上限定</text>
+<text x="84" y="596" font-family="Arial,sans-serif" font-size="18" fill="rgba(255,255,255,0.22)" letter-spacing="1">sfp-okinawa.search-mania.net</text>
 </svg>
