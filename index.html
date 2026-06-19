@@ -395,7 +395,9 @@ function applyBlog(items){
     if(!rawTitle&&b.date)rawTitle=`${fmtDate(b.date)} の投稿`;
     const shortTitle=rawTitle.length>44?rawTitle.slice(0,44)+'…':rawTitle;
     const imgUrl=driveImg(b.image);
-    const blogHref=(b.url&&b.url.includes('/blog/'))?b.url:(b.date?`/blog/${b.date}/`:null);
+    const slugMatch=(b.url||'').match(/\/blog\/([^\/\?#]+)/);
+    const postSlug=slugMatch?slugMatch[1]:(b.date||'');
+    const blogHref=postSlug?`/blog/?post=${postSlug}`:null;
     const tagOpen=blogHref?`<a href="${blogHref}" class="e blog-card reveal">`:`<article class="e blog-card reveal" role="button" tabindex="0" data-idx="${i}">`;
     const tagClose=blogHref?'</a>':'</article>';
     return`${tagOpen}<span class="tape"></span>${imgUrl?'<div class="image"><img src="'+esc(imgUrl)+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>':'<div class="image img-ph"></div>'}<div class="body">${b.date?'<span class="date">'+esc(fmtDate(b.date))+'</span>':''}<p class="cap">${esc(shortTitle)}</p>${b.body?'<span class="cta-lbl">続きを読む →</span>':''}</div>${tagClose}`;
