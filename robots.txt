@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# AI クローラー（インデックス・引用許可）
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://sfp-okinawa.search-mania.net/sitemap.xml
