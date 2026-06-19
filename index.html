@@ -21,6 +21,8 @@
 <meta name="twitter:image" content="https://sfp-okinawa.search-mania.net/ogp.svg">
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://lh3.googleusercontent.com" crossorigin>
+<link rel="dns-prefetch" href="https://script.google.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Noto+Sans+JP:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
@@ -410,7 +412,25 @@ function applyDelivery(items){if(!Array.isArray(items)||!items.length)return;con
 function applyFAQ(items){if(!Array.isArray(items)||!items.length)return;const list=document.getElementById('faqList');if(!list)return;list.innerHTML=items.map(f=>`<div class="faq-item"><button class="faq-q"><span class="faq-q-text">${esc(f.q)}</span><span class="faq-icon">+</span></button><div class="faq-a">${esc(f.a)}</div></div>`).join('');initFAQ();}
 function applyCTA(c){if(!c)return;const h=document.querySelector('.cta-inner h2');if(h&&c.headline1)h.innerHTML=esc(c.headline1)+(c.headline2?`<br><span class="gold-text">${esc(c.headline2)}</span>`:'');const sub=document.querySelector('.cta-sub');if(sub&&c.subText)sub.textContent=c.subText;const actions=document.querySelector('.cta-actions');if(actions&&(c.btn1Text||c.btn2Text)){let html='';if(c.btn1Text&&c.btn1Url)html+=`<a href="${esc(c.btn1Url)}" class="btn btn-cta btn-gold" target="_blank" rel="noopener">${esc(c.btn1Text)} →</a>`;if(c.btn2Text&&c.btn2Url)html+=`<a href="${esc(c.btn2Url)}" class="btn btn-ghost">${esc(c.btn2Text)}</a>`;if(html)actions.innerHTML=html;}}
 
-if(GAS_URL&&GAS_URL.indexOf('ここに')===-1){fetch(GAS_URL).then(r=>r.json()).then(data=>{if(data.settings)applySettings(data.settings);if(data.hero)applyHero(data.hero);if(data.about)applyAbout(data.about);if(data.menu)applyMenu(data.menu);if(data.features)applyFeatures(data.features);if(data.forYou)applyForYou(data.forYou);if(data.reviews)applyReviews(data.reviews);if(data.blog)applyBlog(data.blog);if(data.access)applyAccess(data.access);if(data.sns)applySNS(data.sns);if(data.delivery)applyDelivery(data.delivery);if(data.faq)applyFAQ(data.faq);if(data.cta)applyCTA(data.cta);}).catch(err=>console.warn('CMS fetch error:',err));}
+(function loadCMS(){
+  if(!GAS_URL||GAS_URL.indexOf('ここに')!==-1)return;
+  const CACHE_KEY='sfp_cms_v1';
+  const CACHE_TTL=30*60*1000;
+  function applyAll(d){
+    if(d.settings)applySettings(d.settings);if(d.hero)applyHero(d.hero);if(d.about)applyAbout(d.about);
+    if(d.menu)applyMenu(d.menu);if(d.features)applyFeatures(d.features);if(d.forYou)applyForYou(d.forYou);
+    if(d.reviews)applyReviews(d.reviews);if(d.blog)applyBlog(d.blog);if(d.access)applyAccess(d.access);
+    if(d.sns)applySNS(d.sns);if(d.delivery)applyDelivery(d.delivery);if(d.faq)applyFAQ(d.faq);if(d.cta)applyCTA(d.cta);
+  }
+  try{
+    const raw=localStorage.getItem(CACHE_KEY);
+    if(raw){const c=JSON.parse(raw);if(Date.now()-c.ts<CACHE_TTL){applyAll(c.data);}}
+  }catch(e){}
+  fetch(GAS_URL).then(r=>r.json()).then(data=>{
+    applyAll(data);
+    try{localStorage.setItem(CACHE_KEY,JSON.stringify({ts:Date.now(),data}));}catch(e){}
+  }).catch(err=>console.warn('CMS fetch error:',err));
+})();
 
 /* ── Left panel: network particle canvas ── */
 (function initParticles(){
