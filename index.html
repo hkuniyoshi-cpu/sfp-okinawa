@@ -362,7 +362,7 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycbyu21Op12Ty_Q_F4rZUWonL
 
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function fmtDate(s){if(!s)return '';const m=String(s).match(/^(\d{4})-(\d{2})-(\d{2})/);return m?`${m[1]}.${m[2]}.${m[3]}`:String(s);}
-function driveImg(url){if(!url)return '';const s=String(url).trim();const m1=s.match(/\/d\/([a-zA-Z0-9_-]+)/);if(m1)return`https://drive.google.com/thumbnail?id=${m1[1]}&sz=w1200`;const m2=s.match(/lh3\.googleusercontent\.com\/d\/([a-zA-Z0-9_-]+)/);if(m2)return`https://lh3.googleusercontent.com/d/${m2[1]}=w1200`;if(s.indexOf('drive.google.com/thumbnail')!==-1)return s.replace(/[?&]sz=[^&]*/,'?sz=w1200');return s;}
+function driveImg(url){if(!url)return '';const s=String(url).trim();const m1=s.match(/\/d\/([a-zA-Z0-9_-]+)/);if(m1)return`https://lh3.googleusercontent.com/d/${m1[1]}=w1200`;const m2=s.match(/lh3\.googleusercontent\.com\/d\/([a-zA-Z0-9_-]+)/);if(m2)return`https://lh3.googleusercontent.com/d/${m2[1]}=w1200`;if(s.indexOf('drive.google.com/thumbnail')!==-1){const idM=s.match(/[?&]id=([a-zA-Z0-9_-]+)/);if(idM)return`https://lh3.googleusercontent.com/d/${idM[1]}=w1200`;}return s;}
 function stars(n){const s=parseInt(n,10)||5;const f=Math.min(5,Math.max(0,s));return'★'.repeat(f)+'☆'.repeat(5-f);}
 
 function observe(root,selector){
